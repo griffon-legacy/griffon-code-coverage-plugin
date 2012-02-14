@@ -18,14 +18,27 @@
  * @author Andres Almiray
  */
 class CodeCoverageGriffonPlugin {
-    String version = '0.7'
-    Map dependsOn = [:]
+    // the plugin version
+    String version = '0.8'
+    // the version or versions of Griffon the plugin is designed for
     String griffonVersion = '0.9.5 > *'
+    // the other plugins this plugin depends on
+    Map dependsOn = [:]
+    // resources that are included in plugin packaging
+    List pluginIncludes = []
+    // the plugin license
     String license = 'Apache Software License 2.0'
+    // Toolkit compatibility. No value means compatible with all
+    // Valid values are: swing, javafx, swt, pivot, gtk
     List toolkits = []
+    // Platform compatibility. No value means compatible with all
+    // Valid values are:
+    // linux, linux64, windows, windows64, macosx, macosx64, solaris
     List platforms = []
-    String source = ''
+    // URL where documentation can be found
     String documentation = ''
+    // URL where source can be found
+    String source = 'https://github.com/griffon/griffon-codenarc-plugin'
 
     List authors = [
         [
@@ -33,10 +46,20 @@ class CodeCoverageGriffonPlugin {
             email: 'aalmiray@yahoo.com'
         ]
     ]
-
     String title = 'Generates Code Coverage reports'
+    // accepts Markdown syntax. See http://daringfireball.net/projects/markdown/ for details
     String description = '''
-Creates Code Coverage reports for your code.
-Based on grails-code-coverage by Mike Hugo.
-    '''
+Creates codecCoverage reports for your code. It uses the [Cobertura][1] library.
+It began as a port of the [Grails code-codeverage][2] plugin created by Mike Hugo.
+
+Usage
+----
+Using the Code Coverage plugin is very simple, just issue the following command
+
+        griffon test-app -coverage
+
+
+[1]: http://cobertura.sourceforge.net
+[2]: http://grails.org/plugin/code-coverage
+'''
 }
